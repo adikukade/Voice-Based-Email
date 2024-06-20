@@ -3,7 +3,8 @@ import smtplib
 import speech_recognition as sr
 import pyttsx3
 import pandas as pd
-
+from openpyxl import load_workbook
+import openpyxl 
 app = Flask(__name__)
 
 # Initialize text-to-speech engine
@@ -27,6 +28,8 @@ def listen():
             return "None"
     return query
 
+    # Render the templates
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -38,9 +41,17 @@ def send_email():
     subject = request.form['subject']
     body = request.form['body']
 
-    # Save the name and email to an Excel file
-    data = {'Name': [recipient_name], 'Email': [recipient_email]}
-    df = pd.DataFrame(data)
+    # Load existing data if the file exists
+    try:
+        df = pd.read_excel('receivers.xlsx')
+    except FileNotFoundError:
+        df = pd.DataFrame()
+
+    # Append the new data to the DataFrame
+    new_data = pd.DataFrame({'Name': [recipient_name], 'Email': [recipient_email], 'Subject': [subject]})
+    df = pd.concat([df, new_data], ignore_index=True)
+
+    # Save the DataFrame to Excel
     df.to_excel('receivers.xlsx', index=False, engine='openpyxl')
 
     sender_email = "avidhule7752@gmail.com"
@@ -53,8 +64,12 @@ def send_email():
     server.login(sender_email, sender_password)
     server.sendmail(sender_email, recipient_email, message)
     server.quit()
+    
+    # Return the email sent template
+    return render_template('result.html')
 
-    return 'Email sent!'
+
 
 if __name__ == '__main__':
     app.run(debug=True)
+    

@@ -5,35 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Voice-Activated Email.</title>
     <!-- Add Font Awesome -->
-    <link 
-     rel="stylesheet" 
+    <link
+     rel="stylesheet"
      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-     crossorigin="anonymous" 
+     crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
 
     <style>
-      body {
-        font-family: 'Roboto', sans-serif;
-        background-color: #f4f4f4;
+      body{
+        font-family: 'georgia', sans-serif;
         margin: 0;
         padding: 0;
-        display:relative;
+        display: flex;
         justify-content: center;
         align-items: center;
-      
         height: 100vh;
+        background-image: url('https://img.freepik.com/free-photo/portrait-female-work-having-video-call_23-2148902302.jpg?t=st=1713986829~exp=1713990429~hmac=2a7fb8aba6bffd041eba7decc9ecc16076d884e04b625ef0252754cc948cd699&w=826');
+        background-repeat: no-repeat;
+        background-size: cover;
       }
-      
-      h1 {
-        text-align: center;
-      }
-      
-      form {
-        max-width: 400px;
+      .content {
+        max-width: 600px;
         width: 100%;
-        
-        background-color: #fff;
+        padding: 20px;
+      }
+      .container {
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Semi-transparent background color for better readability */
+         border-radius: 100vh;
+      }
+
+      h1{
+        text-align: center;
+        font-size: 30px; /* Increase font size to 36 pixels */
+        background-color: rgba(230, 230, 250, 0.6);
+        padding: 25px;
+        border-radius: 15px;
+      }
+
+      form{
+        max-width: 400px;
+        width: 200%;
+
+        background-color: transperent;
         margin-left: 550px;
         align: center;
         padding: 20px;
@@ -41,36 +56,44 @@
         border-radius: 8px;
         margin-top: 20px;
       }
-      
-      label {
+
+      label{
+        background-color: rgba(216, 191, 216, 1);
         display: block;
-        margin-bottom: 8px;
+        margin-bottom: 6px;
+        padding: 8px;
+        border-radius: 8px; 
+        text-align: center;
       }
-      
+
       input,
-      textarea {
-        width: 100%;
+      textarea{
+        width: calc(100% - 20px);
         padding: 10px;
         margin-bottom: 16px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+        box-sizing: label;
+        border: 5px solid #ccc;
+        border-radius: 10px;
         font-size: 16px;
       }
-      
-      button {
-        background-color: #4caf50;
+
+      button{
+        background-color: rgba(0, 0, 0, 0.9);
         color: #fff;
-        padding: 12px 20px;
         border: none;
-        border-radius: 4px;
+        border-radius: 15px;
         cursor: pointer;
-        font-size: 16px;
+        font-size: px;
+        margin: 10px;
+        padding: 10px;
       }
-      
-      button.speak-button {
+
+      button.speak-button{
         background-color: #007bff;
         margin-top: 10px;
+      }
+      form {
+        margin: 0 auto;
       }
     </style>
   </head>
@@ -110,5 +133,6 @@
             recognition.start();
         }
     </script>
-</body>
+</div>
+  </body>
 </html>

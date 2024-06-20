@@ -31,7 +31,7 @@ query = listen().lower()
 if 'send email' in query:
     # Get email details from user
     recipient_name = listen()
-    recipient_email = listen()
+    recipient_email = listen().lower()
     subject = listen()
     body = listen()
 
